@@ -1,0 +1,71 @@
+{% load staticfiles %} {% load app_filters %} {% load static %}
+
+{% include "nav.html" %}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+</script>
+
+<style>
+.tss table {  
+    color: #333; /* Lighten up font color */
+    font-family: Helvetica, Arial, sans-serif; /* Nicer font */
+    width: 640px; 
+    border-collapse: 
+    collapse; border-spacing: 0; margin-left: 100px;
+}
+.tss td,th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
+.tss td,th {  
+    background: #FAFAFA; /* Lighter grey background */
+    text-align: center; /* Center our text */
+}
+</style>
+<div class="check_in" style="width:1170px;margin-right:auto;margin-left:auto;">
+
+<h1> Metrics Evaluation </h1>
+<hr style="border-top: 1px solid #DDD;"></hr>
+
+<div class="container" style="margin-top:0px">
+ <div class="col-md-10 col-md-offset-1">
+  <div class="panel panel-default">
+   <div class="panel-heading"><h3 class="panel-title"><strong>Reports </strong></h3>  
+   </div>
+  <div class="panel-body tss" >
+{{ pc.as_html }}
+   </div>
+<!--  <div class="panel-body tss" >
+{{ chart.as_html }}
+   </div>
+  <div class="panel-body tss" >
+{{ lc.as_html }}
+   </div>
+-->
+<hr style="border-top: 1px solid #DDD;"></hr>
+{% if metrics.wait_time_duration > 0 %} 
+<h4><strong>Wait Time</strong></h4> The time waited by the patient after he checks-in and before his session with doctor begins.
+There are {{metrics.wait_time_count}} patients with a total wait time of {{metrics.wait_time_duration}} minutes. {% elif metrics.wait_time_count == 0 %} All patients are called as per scheduled.
+<br>
+{% endif %}
+
+{% if metrics.delay_time_duration > 0 %} 
+<h4><strong>Delay Time</strong></h4> The lag time of the patient where he arrives late after his appointment start time.
+There are {{metrics.delay_time_count}} patients with a total delay of {{metrics.delay_time_duration}} minutes. {% elif metrics.wait_time_count == 0 %} All patients are punctual.
+<br>
+{% endif %}
+
+{% if metrics.no_show > 0 %}
+ There are {{metrics.no_show}} patients who had appointment today but were absent. 
+<br>
+{% endif %}
+
+{% if metrics.extra_time > 0 %}
+<h4><strong>Extra Time</strong></h4> is the additional time taken by the doctor. This happens when the patient's session end time is more than actual scheduled finish time. There are {{ metrics.extra_time  }} patients with a total additional time of {{metrics.extra_time_duration}} minutes.
+<br>
+{% endif %}
+  </div>
+ </div>
+</div>
+
+
+

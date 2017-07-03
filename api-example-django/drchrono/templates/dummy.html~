@@ -1,0 +1,5 @@
+{% load staticfiles %} {% load app_filters %} {% load static %}
+
+{% include "nav.html" %}
+
+

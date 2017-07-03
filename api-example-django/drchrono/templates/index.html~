@@ -1,0 +1,47 @@
+
+{% load staticfiles %}
+
+{% load app_filters %}
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<link href="{% static 'css/styling.css' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>Welcome</title>
+<link type="image/png" href="{% static 'images/favicon.png'%}" rel="icon"></link>
+
+
+</head>
+  <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <img src="{% static 'images/logo-dark.svg'%} " vspace="5">
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron" style="margin-left: 82px;margin-right: 100px;">
+    <div class="container" style="padding-right: 60px;padding-left: 65px;">
+        <h1 style="font-size: 50px;">Welcome to DrChrono Kiosk API</h1>
+        <p>DrChrono Kiosk is a self check-in system that helps patients to check-in their appointment and update their infomation .</p>
+        <p>
+            <a class="btn btn-lg btn-primary" href="{% url 'social:begin' 'drchrono' %}" role="button">
+                Sign in with DrChrono <i class="glyphicon glyphicon-arrow-right"></i>
+            </a>
+        </p>
+    </div>
+</div>
+  </body>
+</html>
+
