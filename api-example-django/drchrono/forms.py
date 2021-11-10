@@ -1,9 +1,7 @@
 from django import forms
 from localflavor.us.us_states import STATE_CHOICES
 from drchrono.shorthands import DrChrono_Shortcuts
-
 # forms go here
-
 class SearchAppointmentForm(forms.Form):
 	firstname = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'placeholder': ' First Name'}) )
 	lastname = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': ' Last Name'}) )

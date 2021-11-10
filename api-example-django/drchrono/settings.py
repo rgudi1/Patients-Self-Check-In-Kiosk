@@ -136,3 +136,4 @@ SOCIAL_AUTH_DRCHRONO_SECRET = "t0yOya0vg0vFqs3poNDFRnP2kdC6hA6o02bzEyDBYzXIMVINM
 
 
 # LOGIN_REDIRECT_URL = '/dummy'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'

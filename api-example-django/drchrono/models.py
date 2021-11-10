@@ -1,3 +1,7 @@
+from django.conf import settings
+if not settings.configured:
+    settings.configure(myapp_defaults, DEBUG=True)
+
 from django.db import models
 
 # Create your models here.
@@ -18,6 +22,6 @@ class AppointmentHistoryModel(models.Model):
     check = models.BooleanField(default=False, max_length= 10)
 
     class Meta:
-	unique_together = ("appointment_id","appointment_start_time")
-	ordering = ['-statusTime']
-   
+	    unique_together = ("appointment_id","appointment_start_time")
+	    ordering = ['-statusTime']
+
